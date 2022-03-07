@@ -1,0 +1,71 @@
+.pageContainer {
+  @apply h-screen grid grid-cols-3;
+}
+
+.contentContainer {
+  @apply col-span-3 md:col-span-2 h-screen;
+}
+
+.contentContainerInner {
+  @apply w-11/12 xl:w-10/12 2xl:w-9/12 mx-auto relative h-full;
+}
+
+.logo {
+  @apply absolute top-20 left-0 flex justify-center w-full md:w-auto;
+}
+
+.textContainer {
+  @apply w-11/12 xl:w-10/12 2xl:w-9/12 mx-auto h-full flex flex-col justify-center;
+
+  h1 {
+    @apply text-font-100 font-semibold text-4xl lg:text-5xl;
+
+    line-height: 140%;
+
+    b {
+      @apply text-brand-500;
+    }
+  }
+
+  ul {
+    @apply pl-4 md:pl-10 grid gap-7 md:w-10/12 lg:w-7/12 my-9;
+
+    li {
+      @apply flex items-start justify-start text-left text-sm lg:text-base;
+
+      line-height: 180%;
+
+      span {
+        @apply text-font-300 ml-2;
+      }
+    }
+  }
+
+  button {
+    @apply flex items-center justify-between border border-brand-100 rounded-full h-20 px-10 mt-6;
+
+    max-width: 325px;
+
+    &:hover {
+      @apply bg-brand-100;
+
+      span {
+        @apply text-font-900;
+      }
+    }
+
+    span {
+      @apply flex items-center text-sm text-font-200;
+
+      svg {
+        @apply ml-2;
+      }
+    }
+  }
+}
+
+.imageContainer {
+  @apply bg-no-repeat bg-cover bg-center;
+
+  background-image: url("/onboarding-image.png");
+}
