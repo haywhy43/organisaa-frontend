@@ -5,6 +5,7 @@ import { mdiLabelVariant, mdiTrendingNeutral } from "@mdi/js";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { IPageServerSideProps } from "../interfaces/pages";
+import { getCookie } from "cookies-next";
 const { colors } = require("../utils/index");
 
 const Home: NextPage = () => {
@@ -110,10 +111,10 @@ const Home: NextPage = () => {
 };
 
 export const getServerSideProps = ({ req }: any): IPageServerSideProps => {
-  console.log(req.cookies)
+  console.log(req.cookies);
   return {
     props: {
-      // isAuthenticated: req.isAuthenticated(),
+      isAuthenticated: JSON.parse(req.cookies.authenticated),
       layout: "Default",
     },
   };
