@@ -5,7 +5,6 @@ import { mdiLabelVariant, mdiTrendingNeutral } from "@mdi/js";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { IPageServerSideProps } from "../interfaces/pages";
-import { getCookie } from "cookies-next";
 const { colors } = require("../utils/index");
 
 const Home: NextPage = () => {
