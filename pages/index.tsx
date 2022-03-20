@@ -2,32 +2,16 @@ import Icon from "@mdi/react";
 import type { NextPage } from "next";
 import styles from "../styles/page-styles/Home.module.scss";
 import { mdiLabelVariant, mdiTrendingNeutral } from "@mdi/js";
-import { useEffect, useState } from "react";
-import http from "../services/http";
-import axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { IPageServerSideProps } from "../interfaces/pages";
 const { colors } = require("../utils/index");
 
 const Home: NextPage = () => {
   const [hoverButton, setHoverButton] = useState(false);
+  const router = useRouter();
 
-  useEffect(() => {
-    // fetch("/api/hello");
-    // axios.get("/api/login")
-  });
-
-  const handleAuthenticate = () =>
-    window.open(`/api/login`);
-
-  const handleCheck = () => {
-    http
-      .get("/")
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const handleAuthenticate = () => router.push(`/api/login`);
 
   return (
     <>
@@ -115,8 +99,6 @@ const Home: NextPage = () => {
                   size="24px"
                 />
               </button>
-
-              <button onClick={handleCheck}>check</button>
             </div>
           </div>
         </div>
@@ -125,6 +107,16 @@ const Home: NextPage = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps = ({ req }: any): IPageServerSideProps => {
+  console.log(req.cookies)
+  return {
+    props: {
+      // isAuthenticated: req.isAuthenticated(),
+      layout: "Default",
+    },
+  };
 };
 
 export default Home;
