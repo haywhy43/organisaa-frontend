@@ -1,14 +1,34 @@
 import Icon from "@mdi/react";
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/page-styles/Home.module.scss";
 import { mdiLabelVariant, mdiTrendingNeutral } from "@mdi/js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import http from "../services/http";
+import axios from "axios";
 const { colors } = require("../utils/index");
 
 const Home: NextPage = () => {
   const [hoverButton, setHoverButton] = useState(false);
+
+  useEffect(() => {
+    // fetch("/api/hello");
+    // axios.get("/api/login")
+  });
+
+  const handleAuthenticate = () =>
+    window.open(`/api/login`);
+
+  const handleCheck = () => {
+    http
+      .get("/")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className={styles.pageContainer}>
@@ -52,6 +72,7 @@ const Home: NextPage = () => {
               <button
                 onMouseOver={() => setHoverButton(true)}
                 onMouseLeave={() => setHoverButton(false)}
+                onClick={handleAuthenticate}
               >
                 <span>
                   <span>Get started with </span>
@@ -94,6 +115,8 @@ const Home: NextPage = () => {
                   size="24px"
                 />
               </button>
+
+              <button onClick={handleCheck}>check</button>
             </div>
           </div>
         </div>

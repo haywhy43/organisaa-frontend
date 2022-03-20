@@ -1,0 +1,20 @@
+.logo {
+  @apply w-full;
+
+}
+
+.logoPath {
+  stroke-dasharray: 3000;
+  animation: animateSvg 5s ease-in-out infinite alternate both;
+  animation-delay: 0s;
+}
+
+@keyframes animateSvg {
+  0% {
+    stroke-dashoffset: 3000;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
